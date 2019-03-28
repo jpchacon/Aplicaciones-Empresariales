@@ -1,0 +1,30 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+		 
+	<ui:define name="content">
+	
+	<div align="center">
+	<h:form>
+	<p:growl id="msgGrowl" showDetail="false" />
+		<h2>Ingresar Banco</h2>
+
+		<h:panelGrid columns="1" border="0">
+			<p:outputLabel value="Usuario"/>
+			<p:inputText id="usernameField" name="j_username" value="#{loginUsuarioVista.userId}" />
+			
+			<p:outputLabel value="Password"/>
+			<p:password id="passwordField" name="j_password" value="#{loginUsuarioVista.password}" feedback="false" />
+	
+			<p:commandButton value="Ingresar" action="#{loginUsuarioVista.login}" update="msgGrowl" />
+		</h:panelGrid>
+		
+	</h:form>
+	
+	</div>
+		
+</ui:define>
+</ui:composition>

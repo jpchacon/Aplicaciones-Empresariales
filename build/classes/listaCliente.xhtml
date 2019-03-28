@@ -1,0 +1,42 @@
+<html 
+	xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+ 
+     <h:head>
+ 
+     </h:head>
+ 
+     <h:body>
+         <p:panel header="Listado de clientes">
+         	<p:dataTable id="dataCliente" value="#{clienteVista.losClientes}" var="cliente" paginator="true" rows="10">
+         
+	         	<p:column headerText="Identificación">
+	         		<p:outputLabel value="#{cliente.clieId}"/>
+	         	</p:column>
+	         	
+	         	<p:column headerText="Nombre">
+	         		<p:outputLabel value="#{cliente.nombre}"/>
+	         	</p:column>
+	         	
+	         	<p:column headerText="Dirección">
+	         		<p:outputLabel value="#{cliente.direccion}"/>
+	         	</p:column>
+	         	
+	         	<p:column headerText="Telefono">
+	         		<p:outputLabel value="#{cliente.telefono}"/>
+	         	</p:column>
+	         	
+	         	<p:column headerText="Mail">
+	         		<p:outputLabel value="#{cliente.email}"/>
+	         	</p:column>
+	         	
+	         	<p:column headerText="Activo">
+	         		<p:outputLabel value="#{cliente.activo}"/>
+	         	</p:column>
+         	
+         	</p:dataTable>
+         </p:panel>
+     </h:body>
+</html>

@@ -1,0 +1,44 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+		 
+	<ui:define name="content">	
+	
+         <h:form id="formulario">
+         	<p:growl/>
+         	<div align="center">
+         		<p:panel header="Gestion Retirar">
+         		<h:panelGrid columns="2" border="1">
+         		
+         			<p:outputLabel value="Cuenta Id:"/>
+         			<p:inputText id="txtCuendId" binding="#{retiroVista.txtCuendId}">
+         				<p:ajax listener="#{retiroVista.txtCuendIdListener}" update="formulario"/>
+         			</p:inputText>
+         			
+         			<p:outputLabel value="Cliente:"/>
+         			<p:inputText id="txtNombreCliente" binding="#{retiroVista.txtNombreCliente}"/>
+         			
+         			<p:outputLabel value="Saldo Actual:"/>
+         			<p:inputText id="txtSaldoCuenta" binding="#{retiroVista.txtSaldoCuenta}"/>
+         			
+         			<p:outputLabel value="Valor a retirar:"/>
+         			<p:inputText id="txtValorRetiro" binding="#{retiroVista.txtValorRetiro}"/>
+         		
+         			
+         		</h:panelGrid>
+         		
+         		
+         		<h:panelGrid columns="4">
+         			<p:commandButton	update="formulario"	disabled="true"	action="#{retiroVista.retirarAction}"	 id="btnRetirar" 	value="Retirar" 	binding="#{retiroVista.btnRetirar}"/>
+         			<p:commandButton	update="formulario"					action="#{retiroVista.limpiarAction}"	 id="btnLimpiar" 	value="Limpiar" 	binding="#{retiroVista.btnLimpiar}"/>
+         		</h:panelGrid>
+         	</p:panel>
+         	</div>
+         	
+              
+         </h:form>
+     </ui:define>
+</ui:composition>

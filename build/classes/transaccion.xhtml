@@ -1,0 +1,45 @@
+<html 
+	xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+ 
+     <h:head>
+ 
+     </h:head>
+ 
+     <h:body>
+         <h:form>
+         	<p:panel header="Gestion Transacción">
+         		<h:panelGrid columns="2" border="1">
+         			<p:outputLabel value="Transacción Id:"/>
+         			<p:inputText id="txtTransaccionId" binding="#{transaccionVista.txtTransaccionId}"/>
+         			
+         			<p:outputLabel value="Cuenta Id:"/>
+         			<p:inputText id="txtCuentaId" placeholder="xxxx-xxxx-xxxx-xxxx" binding="#{transaccionVista.txtCuentaId}"/>
+         			
+         			<p:outputLabel value="Tipo Transacción:"/>
+         			<p:selectOneMenu id="somTipoTransaccion" binding="#{transaccionVista.somTipoTransaccion}">
+         				<f:selectItems value="#{transaccionVista.losTipoTransaccionSelectItem}"/>
+         			</p:selectOneMenu>
+         			
+         			<p:outputLabel value="Usuario Id:"/>
+         			<p:inputText id="txtUsuarioId" binding="#{transaccionVista.txtUsuarioId}"/>
+         			
+         			<p:outputLabel value="Valor:"/>
+         			<p:inputText id="txtValor" binding="#{transaccionVista.txtValor}"/>
+         			
+         			<p:outputLabel value="Fecha:"/>
+         			<p:calendar id="calFecha" binding="#{transaccionVista.calFecha}"/>
+         		</h:panelGrid>
+         		
+         		<h:panelGrid columns="4">
+         			<p:commandButton	action="#{transaccionVista.crearAction}"	 id="btnCrear" 		value="Crear" 		binding="#{transaccionVista.btnCrear}"/>
+         			<p:commandButton	action="#{transaccionVista.modificarAction}" id="btnModificar"  value="Modificar" 	binding="#{transaccionVista.btnModificar}"/>
+         			<p:commandButton	action="#{transaccionVista.borrarAction}"	 id="btnBorrar" 	value="Borrar" 		binding="#{transaccionVista.btnBorrar}"/>
+         			<p:commandButton	action="#{transaccionVista.limpiarAction}"	 id="btnLimpiar" 	value="Limpiar" 	binding="#{transaccionVista.btnLimpiar}"/>
+         		</h:panelGrid>
+         	</p:panel>         
+         </h:form>
+     </h:body>
+</html>

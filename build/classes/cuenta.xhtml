@@ -1,0 +1,72 @@
+<html 
+	xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+ 
+     <h:head>
+ 
+     </h:head>
+ 
+     <h:body>
+         <h:form id="formulario">
+         <p:growl/>
+         <div align="center">
+         	<p:panel header="Gestion Cuenta">
+         		<h:panelGrid columns="2" border="1">
+         			<p:outputLabel value="Cuenta Id:"/>
+         			<p:inputText id="txtCuentaId" binding="#{cuentaVista.txtCuentaId}" placeholder="xxxx-xxxx-xxxx-xxxx">
+         				<p:ajax listener="#{cuentaVista.txtCuentaIdListener}" update="formulario"/>
+         			</p:inputText>
+         			
+         			<p:outputLabel value="Id Cliente:"/>
+         			<p:inputText id="txtIdCliente" binding="#{cuentaVista.txtIdCliente}"/>
+         			
+         			<p:outputLabel value="Saldo:"/>
+         			<p:inputText id="txtSaldo" binding="#{cuentaVista.txtSaldo}"/>
+         			
+         			<p:outputLabel value="Clave:"/>
+         			<p:inputText id="txtClave" binding="#{cuentaVista.txtClave}"/>
+         			
+         			<p:outputLabel value="Activo:"/>
+         			<p:selectOneMenu id="somActivo" binding="#{cuentaVista.somActivo}">
+         				<f:selectItem itemValue="S" itemLabel="SI"/>
+         				<f:selectItem itemValue="N" itemLabel="NO"/>
+         			</p:selectOneMenu>
+         		</h:panelGrid>
+         		
+         		<h:panelGrid columns="4">
+         			<p:commandButton	update="formulario"	disabled="true"	action="#{cuentaVista.crearAction}"	 	 id="btnCrear" 		value="Crear" 		binding="#{cuentaVista.btnCrear}"/>
+         			<p:commandButton	update="formulario"	disabled="true"	action="#{cuentaVista.modificarAction}"	 id="btnModificar"  value="Modificar" 	binding="#{cuentaVista.btnModificar}"/>
+         			<p:commandButton	update="formulario"	disabled="true"	action="#{cuentaVista.borrarAction}"	 id="btnBorrar" 	value="Borrar" 		binding="#{cuentaVista.btnBorrar}"/>
+         			<p:commandButton	update="formulario"					action="#{cuentaVista.limpiarAction}"	 id="btnLimpiar" 	value="Limpiar" 	binding="#{cuentaVista.btnLimpiar}"/>
+         		</h:panelGrid>
+         	</p:panel>
+         </div>
+         
+         
+         <p:panel header="Listado de cuentas">
+         	<p:dataTable id="dataCuenta" value="#{cuentaVista.lasCuentas}" var="cuenta" paginator="true" rows="10">
+         
+	         	<p:column headerText="Id Cuenta">
+	         		<p:outputLabel value="#{cuenta.cuenId}"/>
+	         	</p:column>
+	         	
+	         	<p:column headerText="Saldo">
+	         		<p:outputLabel value="#{cuenta.saldo}"/>
+	         	</p:column>
+	         	
+	         	<p:column headerText="Clave">
+	         		<p:outputLabel value="#{cuenta.clave}"/>
+	         	</p:column>
+	         	
+	         	<p:column headerText="Activo">
+	         		<p:outputLabel value="#{cuenta.activa}"/>
+	         	</p:column>
+         	
+         	</p:dataTable>
+         </p:panel>
+         	         
+         </h:form>
+     </h:body>
+</html>

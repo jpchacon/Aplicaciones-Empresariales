@@ -1,0 +1,44 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+		 
+	<ui:define name="content">	
+	
+         <h:form id="formulario">
+         	<p:growl/>
+         	<div align="center">
+         		<p:panel header="Gestion Consignación">
+         		<h:panelGrid columns="2" border="1">
+         		
+         			<p:outputLabel value="Cuenta Id:"/>
+         			<p:inputText id="txtCuendId" binding="#{consignarVista.txtCuendId}">
+         				<p:ajax listener="#{consignarVista.txtCuendIdListener}" update="formulario"/>
+         			</p:inputText>
+         			
+         			<p:outputLabel value="Cliente:"/>
+         			<p:inputText id="txtNombreCliente" binding="#{consignarVista.txtNombreCliente}"/>
+         			
+         			<p:outputLabel value="Saldo Actual:"/>
+         			<p:inputText id="txtSaldoCuenta" binding="#{consignarVista.txtSaldoCuenta}"/>
+         			
+         			<p:outputLabel value="Valor a consignar:"/>
+         			<p:inputText id="txtValorConsignacion" binding="#{consignarVista.txtValorConsignacion}"/>
+         		
+         			
+         		</h:panelGrid>
+         		
+         		
+         		<h:panelGrid columns="4">
+         			<p:commandButton	update="formulario"	disabled="true"	action="#{consignarVista.consignarAction}"	 id="btnConsignar" 	value="Consignar" 	binding="#{consignarVista.btnConsignar}"/>
+         			<p:commandButton	update="formulario"					action="#{consignarVista.limpiarAction}"	 id="btnLimpiar" 	value="Limpiar" 	binding="#{consignarVista.btnLimpiar}"/>
+         		</h:panelGrid>
+         	</p:panel>
+         	</div>
+         	
+              
+         </h:form>
+     </ui:define>
+</ui:composition>

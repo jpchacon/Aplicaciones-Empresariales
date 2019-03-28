@@ -1,0 +1,34 @@
+<html 
+	xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+ 
+     <h:head>
+ 
+     </h:head>
+ 
+     <h:body>
+         <h:form>
+         	<p:panel header="Gestion Tipo Transacción">
+         		<h:panelGrid columns="2" border="1">
+         			<p:outputLabel value="Tipo Transacción Id:"/>
+         			<p:inputText id="txtTipoTransaccionId" binding="#{tipoTransaccionVista.txtTipoTransaccionId}"/>
+         			
+         			<p:outputLabel value="Nombre:"/>
+         			<p:inputText id="txtNombre" binding="#{tipoTransaccionVista.txtNombre}"/>
+         			
+         			<p:outputLabel value="Activo:"/>
+         			<p:inputText id="txtActivo" binding="#{tipoTransaccionVista.txtActivo}"/>
+         		</h:panelGrid>
+         		
+         		<h:panelGrid columns="4">
+         			<p:commandButton	action="#{tipoTransaccionVista.crearAction}"	 id="btnCrear" 		value="Crear" 		binding="#{tipoTransaccionVista.btnCrear}"/>
+         			<p:commandButton	action="#{tipoTransaccionVista.modificarAction}" id="btnModificar"  value="Modificar" 	binding="#{tipoTransaccionVista.btnModificar}"/>
+         			<p:commandButton	action="#{tipoTransaccionVista.borrarAction}"	 id="btnBorrar" 	value="Borrar" 		binding="#{tipoTransaccionVista.btnBorrar}"/>
+         			<p:commandButton	action="#{tipoTransaccionVista.limpiarAction}"	 id="btnLimpiar" 	value="Limpiar" 	binding="#{tipoTransaccionVista.btnLimpiar}"/>
+         		</h:panelGrid>
+         	</p:panel>         
+         </h:form>
+     </h:body>
+</html>

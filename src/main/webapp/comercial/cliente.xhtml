@@ -1,0 +1,111 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+		 
+	<ui:define name="content">	
+
+         <h:form id="formulario">
+         	<p:growl/>
+         	<div align="center">
+         	
+         		<p:panel header="Gestion Cliente">
+         		<h:panelGrid columns="2" border="1">
+         		
+         			<p:outputLabel value="Identificación:"/>
+         			<p:inputText id="txtIdentificacion" binding="#{clienteVista.txtIdentificacion}">
+         				<p:ajax listener="#{clienteVista.txtIdentificacionListener}" update="formulario"/>
+         			</p:inputText>
+         			
+         			<p:outputLabel value="Tipo Documento:"/>
+         			<p:selectOneMenu id="somTipoDocumento" binding="#{clienteVista.somTipoDocumento}">
+         				<f:selectItems value="#{clienteVista.losTipoDocumentoSelectItem}"/>
+         			</p:selectOneMenu>
+         			
+         			<p:outputLabel value="Nombre:"/>
+         			<p:inputText id="txtNombre" binding="#{clienteVista.txtNombre}"/>
+         			
+         			<p:outputLabel value="Dirección:"/>
+         			<p:inputText id="txtDireccion" placeholder="Calle ## xx-xx Apto xx" binding="#{clienteVista.txtDireccion}"/>
+         			
+         			<p:outputLabel value="Telefono:"/>
+         			<p:inputText id="txtTelefono" binding="#{clienteVista.txtTelefono}"/>
+         			
+         			<p:outputLabel value="E-Mail:"/>
+         			<p:inputText id="txtEmail" placeholder="juanito@micorreo.com" binding="#{clienteVista.txtMail}"/>
+         			
+         			<p:outputLabel value="Activo:"/>
+         			<p:selectOneMenu id="somActivo" binding="#{clienteVista.somActivo}">
+         				<f:selectItem itemValue="S" itemLabel="SI"/>
+         				<f:selectItem itemValue="N" itemLabel="NO"/>
+         			</p:selectOneMenu>
+         		</h:panelGrid>
+         		
+         		<h:panelGrid columns="3">
+         			<p:commandButton	update="formulario"	disabled="true"	action="#{clienteVista.crearAction}"	 id="btnCrear" 		value="Crear" 		binding="#{clienteVista.btnCrear}"/>
+         			<p:commandButton	update="formulario"	disabled="true"	action="#{clienteVista.modificarAction}" id="btnModificar"  value="Modificar" 	binding="#{clienteVista.btnModificar}"/>
+         			<p:commandButton	update="formulario"					action="#{clienteVista.limpiarAction}"	 id="btnLimpiar" 	value="Limpiar" 	binding="#{clienteVista.btnLimpiar}"/>
+         		</h:panelGrid>
+         	</p:panel>
+         	</div>
+         	
+         	<div align="center">
+         		<p:panel header="Cuenta">
+         		<h:panelGrid columns="2" border="1">
+         			
+         			<p:outputLabel value="Cuenta:"/>
+         			<p:inputText id="txtCuenid" value="#{clienteVista.cuenId}" disabled="true"/>
+         			
+         			<p:outputLabel value="Password:"/>
+         			<p:inputText id="txtPassword" value="#{clienteVista.passwd}" disabled="true"/>
+         			
+         			<p:outputLabel value="Saldo:"/>
+         			<p:inputText id="txtSaldo" value="#{clienteVista.saldo}" disabled="true"/>
+         			
+         			<p:outputLabel value="Activo:"/>
+         			<p:inputText id="txtActivo" value="#{clienteVista.estado}" disabled="true"/>
+         			
+         			
+         		</h:panelGrid>
+         		
+         		
+         	</p:panel>
+         	
+         	</div>
+         	
+         	
+         	<p:panel header="Listado de clientes">
+         	<p:dataTable id="dataCliente" value="#{clienteVista.losClientes}" var="cliente" paginator="true" rows="10">
+         
+	         	<p:column headerText="Identificación">
+	         		<p:outputLabel value="#{cliente.clieId}"/>
+	         	</p:column>
+	         	
+	         	<p:column headerText="Nombre">
+	         		<p:outputLabel value="#{cliente.nombre}"/>
+	         	</p:column>
+	         	
+	         	<p:column headerText="Dirección">
+	         		<p:outputLabel value="#{cliente.direccion}"/>
+	         	</p:column>
+	         	
+	         	<p:column headerText="Telefono">
+	         		<p:outputLabel value="#{cliente.telefono}"/>
+	         	</p:column>
+	         	
+	         	<p:column headerText="Mail">
+	         		<p:outputLabel value="#{cliente.email}"/>
+	         	</p:column>
+	         	
+	         	<p:column headerText="Activo">
+	         		<p:outputLabel value="#{cliente.activo}"/>
+	         	</p:column>
+         	
+         	</p:dataTable>
+         </p:panel>       
+         </h:form>
+         
+    </ui:define>
+</ui:composition>

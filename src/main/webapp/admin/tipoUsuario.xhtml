@@ -1,0 +1,61 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+		 
+	<ui:define name="content">	
+	
+         <h:form id="formulario">
+         <p:growl/>
+         <div align="center">
+         	<p:panel header="Gestion Tipo Usuario">
+         		<h:panelGrid columns="2" border="1">
+         			<p:outputLabel value="Tipo Usuario Id:"/>
+         			<p:inputText id="txtTipoTransaccionId" binding="#{tipoUsuarioVista.txtTipoUsuarioId}">
+         				<p:ajax listener="#{tipoUsuarioVista.txtTipoTransaccionIdListener}" update="formulario"/>
+         			</p:inputText>
+         			
+         			<p:outputLabel value="Nombre:"/>
+         			<p:inputText id="txtNombre" binding="#{tipoUsuarioVista.txtNombre}"/>
+         			
+         			<p:outputLabel value="Activo:"/>
+         			<p:selectOneMenu id="somActivo" binding="#{tipoUsuarioVista.somActivo}">
+         				<f:selectItem itemValue="S" itemLabel="SI"/>
+         				<f:selectItem itemValue="N" itemLabel="NO"/>
+         			</p:selectOneMenu>
+         		</h:panelGrid>
+         		
+         		<h:panelGrid columns="4">
+         			<p:commandButton	update="formulario"	disabled="true"	action="#{tipoUsuarioVista.crearAction}"	 id="btnCrear" 		value="Crear" 		binding="#{tipoUsuarioVista.btnCrear}"/>
+         			<p:commandButton	update="formulario"	disabled="true"	action="#{tipoUsuarioVista.modificarAction}" id="btnModificar"  value="Modificar" 	binding="#{tipoUsuarioVista.btnModificar}"/>
+         			<p:commandButton	update="formulario"	disabled="true"	action="#{tipoUsuarioVista.borrarAction}"	 id="btnBorrar" 	value="Borrar" 		binding="#{tipoUsuarioVista.btnBorrar}"/>
+         			<p:commandButton	update="formulario"					action="#{tipoUsuarioVista.limpiarAction}"	 id="btnLimpiar" 	value="Limpiar" 	binding="#{tipoUsuarioVista.btnLimpiar}"/>
+         		</h:panelGrid>
+         	</p:panel>
+         </div>
+         
+         
+         <p:panel header="Listado de tipo usuarios">
+         	<p:dataTable id="dataTipoUsuario" value="#{tipoUsuarioVista.losTipoUsuario}" var="tipUsu" paginator="true" rows="10">
+         
+	         	<p:column headerText="Identificación">
+	         		<p:outputLabel value="#{tipUsu.tiusId}"/>
+	         	</p:column>
+	         	
+	         	<p:column headerText="Nombre">
+	         		<p:outputLabel value="#{tipUsu.nombre}"/>
+	         	</p:column>
+
+	         	<p:column headerText="Activo">
+	         		<p:outputLabel value="#{tipUsu.activo}"/>
+	         	</p:column>
+         	
+         	</p:dataTable>
+         </p:panel>
+         	         
+         </h:form>
+         
+     </ui:define>
+</ui:composition>

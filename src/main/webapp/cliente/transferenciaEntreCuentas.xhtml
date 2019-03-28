@@ -1,0 +1,38 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+		 
+	<ui:define name="content">	
+
+         <h:form id="formulario">
+         	<p:growl/>
+         	<div align="center">
+         		<p:panel header="Gestion Cliente">
+         		<h:panelGrid columns="2" border="1">
+         		
+         			<p:outputLabel value="Cuenta registrada:"/>
+         			<p:selectOneMenu id="somTipoDocumento" binding="#{transferenciaEntreCuentasVista.somCuentasRegistradas}">
+         				<f:selectItems value="#{transferenciaEntreCuentasVista.lasCuentasRegistradasSelectItem}"/>
+         			</p:selectOneMenu>
+         			
+         			<p:outputLabel value="Valor:"/>
+         			<p:inputText id="txtValor" binding="#{transferenciaEntreCuentasVista.valor}"/>
+         			
+         		</h:panelGrid>
+         		
+         		<h:panelGrid columns="2">
+         			<p:commandButton	update="formulario"	id="btnTransferir"	action="#{transferenciaEntreCuentasVista.transferirAction}" 	value="Transferir"	binding="#{transferenciaEntreCuentasVista.btnTransferir}"/>
+         			<p:commandButton	update="formulario"	id="btnCancelar"	action="#{transferenciaEntreCuentasVista.cancelarAction}"   	value="Cancelar" 	binding="#{transferenciaEntreCuentasVista.btnCancelar}"/>
+         		
+         		</h:panelGrid>
+         	</p:panel>
+         	</div>
+         	  
+         </h:form>
+         
+     </ui:define>
+</ui:composition>
+

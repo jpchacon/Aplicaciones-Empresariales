@@ -1,0 +1,80 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+		 
+	<ui:define name="content">	
+	
+         <h:form id="formulario">
+         <p:growl/>
+         <div align="center">
+         	<p:panel header="Gestion Usuario">
+         		<h:panelGrid columns="2" border="1">
+         		
+         			<p:outputLabel value="Usuario Id:"/>
+         			<p:inputText id="txtUsuarioId" placeholder="JuanitoPerez" binding="#{usuarioVista.txtUsuUsuario}">
+         				<p:ajax listener="#{usuarioVista.txtUsuarioIdListener}" update="formulario"/>
+         			</p:inputText>
+         			
+         			<p:outputLabel value="Tipo Usuario:"/>
+         			<p:selectOneMenu id="somTipoUsuario" binding="#{usuarioVista.somTipoUsuario}">
+         				<f:selectItems value="#{usuarioVista.losTipoUsuarioSelectItem}"/>
+         			</p:selectOneMenu>
+         			
+         			<p:outputLabel value="Clave:"/>
+         			<p:inputText id="txtClave" binding="#{usuarioVista.txtClave}"/>
+         			
+         			<p:outputLabel value="Identificación:"/>
+         			<p:inputText id="txtIdentificacion" binding="#{usuarioVista.txtIdentificacion}"/>
+         			
+         			<p:outputLabel value="Nombre:"/>
+         			<p:inputText id="txtNombre" binding="#{usuarioVista.txtNombre}"/>
+         			
+         			<p:outputLabel value="Activo:"/>
+         			<p:selectOneMenu id="somActivo" binding="#{usuarioVista.somActivo}">
+         				<f:selectItem itemValue="S" itemLabel="SI"/>
+         				<f:selectItem itemValue="N" itemLabel="NO"/>
+         			</p:selectOneMenu>
+         		</h:panelGrid>
+         		
+         		<h:panelGrid columns="4">
+         			<p:commandButton	update="formulario"	disabled="true"	action="#{usuarioVista.crearAction}"	 id="btnCrear" 		value="Crear" 		binding="#{usuarioVista.btnCrear}"/>
+         			<p:commandButton	update="formulario"	disabled="true"	action="#{usuarioVista.modificarAction}" id="btnModificar"  value="Modificar" 	binding="#{usuarioVista.btnModificar}"/>
+         			<p:commandButton	update="formulario"					action="#{usuarioVista.limpiarAction}"	 id="btnLimpiar" 	value="Limpiar" 	binding="#{usuarioVista.btnLimpiar}"/>
+         		</h:panelGrid>
+         	</p:panel>
+         </div>
+         	
+         	
+         	
+         	<p:panel header="Listado de usuarios">
+         	<p:dataTable id="dataUsuario" value="#{usuarioVista.losUsuarios}" var="usuario" paginator="true" rows="10">
+         
+	         	<p:column headerText="id de usuario">
+	         		<p:outputLabel value="#{usuario.usuUsuario}"/>
+	         	</p:column>
+	         	
+	         	<p:column headerText="Clave">
+	         		<p:outputLabel value="#{usuario.clave}"/>
+	         	</p:column>
+	         	
+	         	<p:column headerText="Identificación">
+	         		<p:outputLabel value="#{usuario.identificacion}"/>
+	         	</p:column>
+	         	
+	         	<p:column headerText="Nombre">
+	         		<p:outputLabel value="#{usuario.nombre}"/>
+	         	</p:column>
+
+	         	<p:column headerText="Activo">
+	         		<p:outputLabel value="#{usuario.activo}"/>
+	         	</p:column>
+         	
+         	</p:dataTable>
+         </p:panel>  
+         </h:form>
+         
+     </ui:define>
+</ui:composition>

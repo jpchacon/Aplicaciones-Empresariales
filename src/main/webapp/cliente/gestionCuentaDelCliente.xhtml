@@ -1,0 +1,41 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+		 
+	<ui:define name="content">	
+
+         <h:form id="formulario">
+         	<p:growl/>
+         	<div align="center">
+         	
+         		<p:panel header="Gestion Cuenta">
+         		<h:panelGrid columns="2" border="1">
+         			
+         			<p:outputLabel value="Cuenta:"/>
+         			<p:inputText id="txtCuenta" value="#{gestionCuentaCliente.cuenId}" disabled="true"/>
+         			
+         			<p:outputLabel value="Saldo:"/>
+         			<p:inputText id="txtSaldo" value="$#{gestionCuentaCliente.txtSaldo}" disabled="true"/>
+         					
+         			<p:outputLabel value="Password:"/>
+         			<p:inputText id="txtEmail" value="#{gestionCuentaCliente.txtPassword}" />
+         			
+         			
+         			
+         		</h:panelGrid>
+         		
+         		<h:panelGrid columns="1">
+         			<p:commandButton	update="formulario"	 id="btnModificar" action="#{gestionCuentaCliente.modificarAction}" value="Modificar" binding="#{gestionCuentaCliente.btnModificar}"/>
+         			
+         		</h:panelGrid>
+         	</p:panel>
+         	</div>
+         	
+      
+         </h:form>
+         
+     </ui:define>
+</ui:composition>

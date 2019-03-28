@@ -1,0 +1,56 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+		 
+	<ui:define name="content">	
+
+         <h:form id="formulario">
+         	<p:growl/>
+         	<div align="center">
+         		<p:panel header="Gestion de cuenta registrada">
+         		<h:panelGrid columns="2" border="1">
+         		
+         			<p:outputLabel value="Identificación de usuario:"/>
+         			<p:inputText id="txtIdentificacion" binding="#{cuentaRegistradaVista.txtIdentificacion}">
+         				<p:ajax listener="#{cuentaRegistradaVista.txtIdentificacionListener}" update="formulario"/>
+         			</p:inputText>
+         			
+         			<p:outputLabel value="Nombre cliente:"/>
+         			<p:inputText id="txtNombreCliente" binding="#{cuentaRegistradaVista.txtNombreCliente}" disabled="true"/>
+         			
+         			<p:outputLabel value="Tipo de documento:"/>
+         			<p:selectOneMenu id="somTipoDocumento" binding="#{cuentaRegistradaVista.somTipoDocumento}">
+         				<f:selectItems value="#{cuentaRegistradaVista.losTipoDocumentosSelectItem}"/>
+         			</p:selectOneMenu>
+         			
+         			<p:outputLabel value="Número de cuenta:"/>
+         			<p:inputText id="txtIdCuenta" binding="#{cuentaRegistradaVista.txtIdCuenta}"/>
+         			
+         		</h:panelGrid>
+         		
+         		<h:panelGrid columns="4">
+         			<p:commandButton	action="#{cuentaRegistradaVista.registrarAction}"	update="formulario"		id="btnRegistrar" 	value="Registrar" />
+         			<p:commandButton	action="#{cuentaRegistradaVista.limpiarAction}"		update="formulario"		id="btnLimpiar" 	value="Limpiar"/>
+         		</h:panelGrid>
+         	</p:panel>
+         	</div>
+         	
+         	
+			<p:panel header="Listado de las cuentas registradas">
+	         	<p:dataTable id="dataCliente" value="#{cuentaRegistradaVista.lasCuentasRegistradas}" var="cuentaregistradas" paginator="true" rows="10">
+		         	
+		         	<p:column headerText="Número de cuentas">
+		         		<p:outputLabel value="#{cuentaregistradas.cuenta.cuenId}"/>
+		         	</p:column>
+	         	
+	         	</p:dataTable>
+         	</p:panel>         	
+
+   
+         </h:form>
+         
+     </ui:define>
+</ui:composition>

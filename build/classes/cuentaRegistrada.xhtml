@@ -1,0 +1,34 @@
+<html 
+	xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+ 
+     <h:head>
+ 
+     </h:head>
+ 
+     <h:body>
+         <h:form>
+         	<p:panel header="Gestion Cuenta Registrada">
+         		<h:panelGrid columns="2" border="1">
+         			<p:outputLabel value="Cuenta Registrada Id:"/>
+         			<p:inputText id="txtCuentaRegistradaId" binding="#{cuentaRegistradaVista.txtCuentaRegistradaId}"/>
+         			
+         			<p:outputLabel value="Cliente Id:"/>
+         			<p:inputText id="txtIdCliente" binding="#{cuentaRegistradaVista.txtIdCliente}"/>
+         			
+         			<p:outputLabel value="Cuenta Id:"/>
+         			<p:inputText id="txtIdCuenta" binding="#{cuentaRegistradaVista.txtIdCuenta}"/>      			
+         		</h:panelGrid>
+         		
+         		<h:panelGrid columns="4">
+         			<p:commandButton	action="#{cuentaRegistradaVista.crearAction}"	 	 id="btnCrear" 		value="Crear" 		binding="#{cuentaRegistradaVista.btnCrear}"/>
+         			<p:commandButton	action="#{cuentaRegistradaVista.modificarAction}"	 id="btnModificar"  value="Modificar" 	binding="#{cuentaRegistradaVista.btnModificar}"/>
+         			<p:commandButton	action="#{cuentaRegistradaVista.borrarAction}"	 	 id="btnBorrar" 	value="Borrar" 		binding="#{cuentaRegistradaVista.btnBorrar}"/>
+         			<p:commandButton	action="#{cuentaRegistradaVista.limpiarAction}"	 	 id="btnLimpiar" 	value="Limpiar" 	binding="#{cuentaRegistradaVista.btnLimpiar}"/>
+         		</h:panelGrid>
+         	</p:panel>         
+         </h:form>
+     </h:body>
+</html>

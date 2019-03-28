@@ -1,0 +1,60 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+		 
+	<ui:define name="content">	
+	
+         <h:form id="formulario">
+         <p:growl/>
+         <div align="center">
+         	<p:panel header="Gestion Tipo Documento">
+         		<h:panelGrid columns="2" border="1">
+         			<p:outputLabel value="Id Tipo Documento"/>
+         			<p:inputText id="txtIdTipoDocumento" binding="#{tipoDocumentoVista.txtIdTipoDocumento}">
+         				<p:ajax listener="#{tipoDocumentoVista.txtIdTipoDocumentoListener}" update="formulario"/>
+         			</p:inputText>
+         			
+         			<p:outputLabel value="Nombre:"/>
+         			<p:inputText id="txtNombre" binding="#{tipoDocumentoVista.txtNombre}"/>
+         			
+         			<p:outputLabel value="Activo:"/>
+         			<p:selectOneMenu id="somActivo" binding="#{tipoDocumentoVista.somActivo}">
+         				<f:selectItem itemValue="S" itemLabel="SI"/>
+         				<f:selectItem itemValue="N" itemLabel="NO"/>
+         			</p:selectOneMenu>
+         		</h:panelGrid>
+         		
+         		<h:panelGrid columns="4">
+         			<p:commandButton	update="formulario"	disabled="true"	action="#{tipoDocumentoVista.crearAction}"	 id="btnCrear" 		value="Crear" 		binding="#{tipoDocumentoVista.btnCrear}"/>
+         			<p:commandButton	update="formulario"	disabled="true"	action="#{tipoDocumentoVista.modificarAction}" id="btnModificar"  value="Modificar" 	binding="#{tipoDocumentoVista.btnModificar}"/>
+         			<p:commandButton	update="formulario"	disabled="true"	action="#{tipoDocumentoVista.borrarAction}"	 id="btnBorrar" 	value="Borrar" 		binding="#{tipoDocumentoVista.btnBorrar}"/>
+         			<p:commandButton	update="formulario"					action="#{tipoDocumentoVista.limpiarAction}"	 id="btnLimpiar" 	value="Limpiar" 	binding="#{tipoDocumentoVista.btnLimpiar}"/>
+         		</h:panelGrid>
+         	</p:panel>
+         </div>
+         
+         <p:panel header="Listado de tipo de documentos">
+         	<p:dataTable id="dataTipoDoc" value="#{tipoDocumentoVista.losTipoDocumento}" var="tipDoc" paginator="true" rows="10">
+         
+	         	<p:column headerText="Identificación">
+	         		<p:outputLabel value="#{tipDoc.tdocId}"/>
+	         	</p:column>
+	         	
+	         	<p:column headerText="Nombre">
+	         		<p:outputLabel value="#{tipDoc.nombre}"/>
+	         	</p:column>
+	         	    	
+	         	<p:column headerText="Activo">
+	         		<p:outputLabel value="#{tipDoc.activo}"/>
+	         	</p:column>
+         	
+         	</p:dataTable>
+         </p:panel>
+         	         
+         </h:form>
+         
+     </ui:define>
+</ui:composition>
